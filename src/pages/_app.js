@@ -26,7 +26,7 @@ class MyApp extends App {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <Head>
-            <title>Hello World!</title>
+            <title>Desafió React</title>
             <meta
               name="viewport"
               content="minimum-scale=1, initial-scale=1, width=device-width"
