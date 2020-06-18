@@ -10,6 +10,10 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+          <meta
+            name="description"
+            content="Esta web esta diseñada como prueba de habilidades."
+          />
           <link
             rel="preload"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"

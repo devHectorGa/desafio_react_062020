@@ -6,3 +6,8 @@ export const selectPostsToData = createSelector(
   [selectPosts],
   (dataPosts) => dataPosts.data
 );
+
+export const selectLoadStateToData = createSelector(
+  [selectPosts],
+  (dataPosts) => dataPosts.isFetching
+);

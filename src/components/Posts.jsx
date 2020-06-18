@@ -6,7 +6,10 @@ import Loader from "./Loader";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { selectPostsToData } from "../redux/posts/posts.selectors";
+import {
+  selectPostsToData,
+  selectLoadStateToData,
+} from "../redux/posts/posts.selectors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,16 +18,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Posts({ posts }) {
+function Posts({ posts, isFetching }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid container spacing={1} className={classes.grid}>
-        {posts ? (
-          posts.map((post) => <Post key={post.id} post={post} />)
-        ) : (
-          <Loader />
-        )}
+        {
+          (posts =
+            null && isFetching ? (
+              <Loader />
+            ) : (
+              posts.map((post) => <Post key={post.id} post={post} />)
+            ))
+        }
       </Grid>
     </div>
   );
@@ -32,6 +38,7 @@ function Posts({ posts }) {
 
 const mapStateToProps = createStructuredSelector({
   posts: selectPostsToData,
+  isFetching: selectLoadStateToData,
 });
 
 export default connect(mapStateToProps)(Posts);
