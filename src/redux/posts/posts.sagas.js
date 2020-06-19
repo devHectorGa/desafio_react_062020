@@ -36,7 +36,6 @@ function* submitPostsAsync({ payload: { title, text, userId } }) {
     );
     const data = yield res.json();
     yield put(submitPostSuccess(data));
-    // yield put(submitPostSuccess());
   } catch (error) {
     yield put(submitPostFailure(error.message));
   }
