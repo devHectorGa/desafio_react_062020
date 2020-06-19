@@ -24,8 +24,7 @@ function Posts({ posts, isFetching }) {
     <div className={classes.root}>
       <Grid container spacing={1} className={classes.grid}>
         {
-          (posts =
-            null && isFetching ? (
+          (posts == null && isFetching ? (
               <Loader />
             ) : (
               posts.map((post) => <Post key={post.id} post={post} />)
