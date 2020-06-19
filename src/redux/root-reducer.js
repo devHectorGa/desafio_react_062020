@@ -7,7 +7,6 @@ import postsReducer from "./posts/posts.reducer";
 const persistConfig = {
   key: "thisisakey",
   storage,
-  blacklist: ["posts"],
 };
 const rootReducer = combineReducers({
   posts: postsReducer,
