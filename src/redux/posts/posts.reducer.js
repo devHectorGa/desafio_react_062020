@@ -4,6 +4,8 @@ const INITIAL_STATE = {
   data: null,
   isFetching: false,
   errorMessage: undefined,
+  showAddPost: false,
+  isSubmit: false,
 };
 
 const postsReducer = (state = INITIAL_STATE, action) => {
@@ -26,6 +28,28 @@ const postsReducer = (state = INITIAL_STATE, action) => {
         errorMessage: action.payload,
       };
     }
+    case PostsActionTypes.TOGGLE_ADD_POST_SHOW:
+      return {
+        ...state,
+        showAddPost: !state.showAddPost,
+      };
+    case PostsActionTypes.SUBMIT_POST_START:
+      return {
+        ...state,
+        isSubmit: true,
+      };
+    case PostsActionTypes.SUBMIT_POST_SUCCESS:
+      return {
+        ...state,
+        isSubmit: false,
+        showAddPost: false,
+      };
+    case PostsActionTypes.SUBMIT_POST_FAILURE:
+      return {
+        ...state,
+        isSubmit: false,
+        errorMessage: action.payload,
+      };
     default:
       return state;
   }

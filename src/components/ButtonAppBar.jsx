@@ -5,6 +5,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/Add";
+import { toggleAddPostShow } from "../redux/posts/posts.actions";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,8 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+function ButtonAppBar({ toggleAddPostShow }) {
   const classes = useStyles();
+  const handleClick = () => toggleAddPostShow();
 
   return (
     <div className={classes.root}>
@@ -31,6 +34,7 @@ export default function ButtonAppBar() {
           </Typography>
 
           <IconButton
+            onClick={handleClick}
             edge="start"
             className={classes.menuButton}
             color="inherit"
@@ -43,3 +47,9 @@ export default function ButtonAppBar() {
     </div>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  toggleAddPostShow: () => dispatch(toggleAddPostShow()),
+});
+
+export default connect(null, mapDispatchToProps)(ButtonAppBar);

@@ -7,6 +7,7 @@ import theme from "../theme";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import ButtonAppBar from "../components/ButtonAppBar";
+import ModalForm from "../components/ModalForm";
 
 import { store, persistor } from "../redux/store";
 
@@ -35,6 +36,7 @@ class MyApp extends App {
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <ButtonAppBar />
+            <ModalForm />
             <Component {...pageProps} />
           </ThemeProvider>
         </PersistGate>
